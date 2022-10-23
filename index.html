@@ -1,0 +1,36 @@
+<style>
+    *{margin: 0;padding: 0;}
+    html, body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #random {
+        margin: 0 auto;
+        padding: 10px;
+        font-size: 60px;
+        border: 0px;
+        border-radius: 12px;
+        box-shadow: 0px 0px 6px rgba(0, 0, 0, .72);
+    }
+</style>
+<link rel="stylesheet" href="./assets/header.css">
+<meta charset="utf8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=no" />
+
+<body>
+    <div class="header">
+        <div id="logo">
+            <img src="./assets/128x_.png" alt="ITA Logo">
+        </div>
+        <div id="title">科目三考场</div>
+    </div>
+    <button id="random">随机一题</button>
+</body>
+<script src="./config.js"></script>
+<script>
+    document.getElementById("random").onclick = ()=>{
+        let p = problem_list[Math.floor(Math.random() * problem_list.length)]
+        window.open(p)
+    }
+</script>
