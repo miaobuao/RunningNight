@@ -6,9 +6,7 @@ import random
 styles = [meo.screen.FORMAT_FONT_BLUE, meo.screen.FORMAT_FONT_RED, meo.screen.FORMAT_BG_RED, meo.screen.FORMAT_UNDERLINE,
         meo.screen.FORMAT_BG_SKY_BLUE, meo.screen.FORMAT_FONT_PRUPLE, meo.screen.FORMAT_BG_GREEN, meo.screen.FORMAT_BG_YELLOW]
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-host = socket.gethostname()
-print(host)
-s.bind((host, 25505))
+s.bind(('0.0.0.0', 25506))
 s.listen(1024)
 
 clients = []
@@ -37,6 +35,7 @@ def tcplink(sock, addr):
             try:
                 msg = f"{addr[0]}: {data}"
                 msg = meo.screen.sformat(msg, *random.sample(styles, random.randint(1, len(styles))))
+                print(msg)
                 broadcast(msg, [sock])
                 sock.send(b"sending...\n")
             except:
